@@ -12,7 +12,12 @@ def step_open_website(context):
 @then(u'we activate "drag and drop" function both source_to_target and by offset')
 def step_drag_and_drop(context):
     context.drag.drag_drop()
+
+
+def step_drag_and_drop_offset(context):
     context.drag.drag_drop_offset()
+
+
 
 
 # @then(u"we confirm that the functions work well")
