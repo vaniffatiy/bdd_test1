@@ -26,6 +26,6 @@ def step_click_search(context):
 @then(u'it shows the current weather in the region')
 def step_assert_search(context):
     result = context.browser.find_element(By.XPATH, '//div[@id="taw"]')
-    assert " Minsk" in result.text
+    assert "Minsk" in result.text
 
 
