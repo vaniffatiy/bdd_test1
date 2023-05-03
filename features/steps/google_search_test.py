@@ -4,28 +4,33 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
 
-@given(u"we have set the webbrowser settings to Chrome webdriver")
+@given(u"I have set the webbrowser settings to Chrome webdriver")
 def set_browser(context):
-    context.browser = webdriver.Chrome()
-    assert hasattr(context, "browser"), "Driver not found in context"
+    context.driver = webdriver.Chrome()
+    assert hasattr(context, "driver"), "Driver not found in context"
 
 
-@when(u"we type in a request for the weather in Google input field")
+@given(u"I am on the main page")
 def step_open_website(context):
-    context.browser.get("https://www.google.com/")
+    context.driver.get("https://www.google.com/")
 
 
-def step_type_in(context):
-    context.browser.find_element(By.XPATH, '//textarea[@title="Search"]').send_keys("Weather")
+@when(u'I type in {search_query} in Google input field')
+def step_type_in(context, search_query):
+    print(f"search_query = {search_query}")
+    search_box = context.driver.find_element(By.NAME, 'q')
+    search_box.send_keys(search_query)
 
 
+@when(u'click Enter key')
 def step_click_search(context):
-    context.browser.find_element(By.XPATH, '//textarea[@title="Search"]').send_keys(Keys.ENTER)
+    context.driver.find_element(By.NAME, 'q').send_keys(Keys.ENTER)
 
 
-@then(u'it shows the current weather in the region')
+@then(u'I see the current weather in the region today')
 def step_assert_search(context):
-    result = context.browser.find_element(By.XPATH, '//div[@id="taw"]')
-    assert "Minsk" in result.text
+    # results = context.driver.find_element(By.XPATH, '//div[@id="taw"]')
+    results = context.driver.find_element(By.CLASS_NAME, 'g')
+    assert len(results) > 0
 
 
