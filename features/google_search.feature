@@ -5,7 +5,7 @@ Feature: testing Google searching
     And I am on the main page
     When I type in <search_query> in Google input field
     And click Enter key
-    Then I see the current weather in the region today
+    Then I see the weather reports
 
     Examples:
 

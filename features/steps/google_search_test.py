@@ -27,7 +27,7 @@ def step_click_search(context):
     context.driver.find_element(By.NAME, 'q').send_keys(Keys.ENTER)
 
 
-@then(u'I see the current weather in the region today')
+@then(u'I see the weather reports')
 def step_assert_search(context):
     # results = context.driver.find_element(By.XPATH, '//div[@id="taw"]')
     results = context.driver.find_element(By.CLASS_NAME, 'g')
