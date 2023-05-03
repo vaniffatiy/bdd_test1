@@ -30,7 +30,9 @@ def step_click_search(context):
 @then(u'I see the weather reports')
 def step_assert_search(context):
     # results = context.driver.find_element(By.XPATH, '//div[@id="taw"]')
-    results = context.driver.find_element(By.CLASS_NAME, 'g')
+    # results = context.driver.find_element(By.XPATH, '//div[@class="g"]')
+    results = context.driver.find_elements(By.XPATH, "//div[@class='ULSxyf']")
+    # assert "weather" in results.text
     assert len(results) > 0
 
 
