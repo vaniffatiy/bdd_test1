@@ -1,11 +1,13 @@
 from selenium import webdriver
-
-from bdd_test1.src.common.webdriver_handler import WebDriverHandler
-
-def before_scenario(context, scenario):
-    context.webdriver_handler = WebDriverHandler()
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 
 
-def after_scenario(context, scenario):
-    context.webdriver_handler.quit()
+def before_all(context, feature):
+    service = Service(ChromeDriverManager(version="94.0.4606.61").install())
+    context.driver = webdriver.Chrome(service=service)
+
+
+def after_all(context, feature):
+    context.driver.quit()
 
