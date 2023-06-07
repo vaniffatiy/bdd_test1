@@ -1,6 +1,6 @@
 from selenium import webdriver
 
-from bdd_test1.src.common.webdriver_handler import WebDriverHandler
+from UI_tests.src.common.webdriver_handler import WebDriverHandler
 
 def before_scenario(context, scenario):
     context.webdriver_handler = WebDriverHandler()

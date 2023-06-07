@@ -1,5 +1,5 @@
 # from behave import given, then
-# from bdd_test1.src.pages.drag_page import DragPage
+# from UI_tests.src.pages.drag_page import DragPage
 #
 #
 # @given(u"we have the website opened")
